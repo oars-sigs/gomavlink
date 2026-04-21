@@ -1,0 +1,1358 @@
+<?xml version="1.0"?>
+<mavlink>
+  <!-- VK-fly contact info:                                              -->
+  <!-- company URL: http://101.42.9.203/#/home                           -->
+  <!-- email contact: liuyangzys@outlook.com                             -->
+  <!-- mavlink ID range: 53000 - 54000                                   -->
+  <!-- command ID range: 44000 - 44999                                   -->
+  <include>common.xml</include>
+  <dialect>0</dialect>
+  <enums>
+    <enum name="VKFLY_AP_TYPE">
+      <description>Drone airframe</description>
+      <entry value="41" name="VKFLY_AP_TYPE_I4">
+        <description>Quadrotor I4</description>
+      </entry>
+      <entry value="42" name="VKFLY_AP_TYPE_X4">
+        <description>Quadrotor X4</description>
+      </entry>
+      <entry value="43" name="VKFLY_AP_TYPE_X4R">
+        <description>Quadrotor X4 reverse</description>
+      </entry>
+      <entry value="44" name="VKFLY_AP_TYPE_I4R">
+        <description>Quadrotor I4 reverse</description>
+      </entry>
+      <entry value="61" name="VKFLY_AP_TYPE_I6">
+        <description>Hexarotor I6</description>
+      </entry>
+      <entry value="62" name="VKFLY_AP_TYPE_X6">
+        <description>Hexarotor X6</description>
+      </entry>
+      <entry value="63" name="VKFLY_AP_TYPE_YI6D">
+        <description>Three axis hexarotor YI6D</description>
+      </entry>
+      <entry value="64" name="VKFLY_AP_TYPE_Y6D">
+        <description>Three axis hexarotor Y6D</description>
+      </entry>
+      <entry value="65" name="VKFLY_AP_TYPE_H6">
+        <description>Hexarotor H6</description>
+      </entry>
+      <entry value="66" name="VKFLY_AP_TYPE_I6R">
+        <description>Hexarotor I6 reverse</description>
+      </entry>
+      <entry value="67" name="VKFLY_AP_TYPE_X6R">
+        <description>Hexarotor X6 reverse</description>
+      </entry>
+      <entry value="81" name="VKFLY_AP_TYPE_I8">
+        <description>Octorotor I8</description>
+      </entry>
+      <entry value="82" name="VKFLY_AP_TYPE_X8">
+        <description>Octorotor X8</description>
+      </entry>
+      <entry value="83" name="VKFLY_AP_TYPE_4X8M">
+        <description>Four axis octorotor, upper level X4, lower level reversed X4.</description>
+      </entry>
+      <entry value="84" name="VKFLY_AP_TYPE_4X8D">
+        <description>Four axis octorotor, upper level clockwise, lower level anticlockwise</description>
+      </entry>
+      <entry value="85" name="VKFLY_AP_TYPE_4X8MR">
+        <description>Four axis octorotor, all rotors are opposite of 4X8M.</description>
+      </entry>
+      <entry value="86" name="VKFLY_AP_TYPE_4X8DR">
+        <description>Four axis octorotor, all rotors are opposite of 4X8M.</description>
+      </entry>
+      <entry value="87" name="VKFLY_AP_TYPE_I8R">
+        <description>Octorotor I8 reverse</description>
+      </entry>
+      <entry value="88" name="VKFLY_AP_TYPE_X8R">
+        <description>Octorotor X8 reverse</description>
+      </entry>
+      <entry value="121" name="VKFLY_AP_TYPE_6I12">
+        <description>Six axis twelve rotor, upper level I6, lower lever opposite with I6.</description>
+      </entry>
+      <entry value="122" name="VKFLY_AP_TYPE_6X12">
+        <description>Six axis twelve rotor, upper level X6, lower lever opposite with X6.</description>
+      </entry>
+      <entry value="123" name="VKFLY_AP_TYPE_6H12">
+        <description>Six axis twelve rotor, upper level H6, lower lever opposite with H6.</description>
+      </entry>
+      <entry value="161" name="VKFLY_AP_TYPE_8I16">
+        <description>8 axis 16 rotor, upper level I8, lower lever opposite with I8</description>
+      </entry>
+      <entry value="162" name="VKFLY_AP_TYPE_8X16">
+        <description>8 axis 16 rotor, upper level X8, lower lever opposite with X8</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_FIXEDWING_AP_TYPE">
+      <description>Fixedwing airframe</description>
+      <entry value="0" name="VKFLY_FIXEDWING_AP_TYPE_T_TAIL"></entry>
+      <entry value="1" name="VKFLY_FIXEDWING_AP_TYPE_V_TAIL"></entry>
+      <entry value="2" name="VKFLY_FIXEDWING_AP_TYPE_TRIANGLE"></entry>
+      <entry value="3" name="VKFLY_FIXEDWING_AP_TYPE_TANDEM"></entry>
+      <entry value="4" name="VKFLY_FIXEDWING_AP_TYPE_V_TAIL_REV"></entry>
+      <entry value="5" name="VKFLY_FIXEDWING_AP_TYPE_CUSTOM1"></entry>
+      <entry value="6" name="VKFLY_FIXEDWING_AP_TYPE_CUSTOM2"></entry>
+      <entry value="7" name="VKFLY_FIXEDWING_AP_TYPE_CUSTOM3"></entry>
+    </enum>
+
+    <enum name="VKFLY_USER_COMP_ID">
+      <description>user define compnent id, 0-all 1-autopilot</description>
+      <entry value="3" name="VKFLY_COMP_ID_VKGPSA"></entry>
+      <entry value="4" name="VKFLY_COMP_ID_VKGPSB"></entry>
+      <entry value="5" name="VKFLY_COMP_ID_RFD_F"></entry>
+      <entry value="6" name="VKFLY_COMP_ID_RFD_R"></entry>
+      <entry value="7" name="VKFLY_COMP_ID_RFD_D"></entry>
+      <entry value="8" name="VKFLY_COMP_ID_RFD_360"></entry>
+      <entry value="9" name="VKFLY_COMP_ID_RTK"></entry>
+      <entry value="10" name="VKFLY_COMP_ID_BAT0"></entry>
+      <entry value="11" name="VKFLY_COMP_ID_BAT1"></entry>
+      <entry value="12" name="VKFLY_COMP_ID_BAT2"></entry>
+      <entry value="13" name="VKFLY_COMP_ID_BAT3"></entry>
+      <entry value="14" name="VKFLY_COMP_ID_BAT4"></entry>
+      <entry value="15" name="VKFLY_COMP_ID_BAT5"></entry>
+      <entry value="16" name="VKFLY_COMP_ID_ECU0"></entry>
+      <entry value="17" name="VKFLY_COMP_ID_ECU1"></entry>
+      <entry value="18" name="VKFLY_COMP_ID_ECU2"></entry>
+      <entry value="19" name="VKFLY_COMP_ID_ECU3"></entry>
+      <entry value="20" name="VKFLY_COMP_ID_WEIGHER"></entry>
+      <entry value="21" name="VKFLY_COMP_ID_PARACHUTE"></entry>
+      <entry value="22" name="VKFLY_COMP_ID_BAT6"></entry>
+      <entry value="23" name="VKFLY_COMP_ID_BAT7"></entry>
+      <entry value="24" name="VKFLY_COMP_ID_BAT8"></entry>
+      <entry value="25" name="VKFLY_COMP_ID_BAT9"></entry>
+      <entry value="30" name="VKFLY_COMP_ID_ASPD0"></entry>
+      <entry value="31" name="VKFLY_COMP_ID_ASPD1"></entry>
+      <entry value="32" name="VKFLY_COMP_ID_EV2FMUB"></entry>
+    </enum>
+
+    <enum name="VKFLY_FS_ACTION">
+      <description>Failsafe action</description>
+      <entry value="0" name="FAIL_SAFE_ACT_NONE">
+        <description>Do nothing</description>
+      </entry>
+      <entry value="1" name="FAIL_SAFE_ACT_LOITER">
+        <description>Hold position for rotor wing. Loiter for fixedwing.</description>
+      </entry>
+      <entry value="2" name="FAIL_SAFE_ACT_RTL">
+        <description>Return to lauch.</description>
+      </entry>
+      <entry value="3" name="FAIL_SAFE_ACT_RTR">
+        <description>Go to the nearest rally point.</description>
+      </entry>
+      <entry value="4" name="FAIL_SAFE_ACT_LAND">
+        <description>Landing in place.</description>
+      </entry>
+      <entry value="5" name="FAIL_SAFE_ACT_LOCK">
+        <description>Terminate servo output and disarm the drone.</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_ROI_STATE" bitmask="true">
+      <description>Bitmap for ROI state</description>
+      <entry value="1" name="VKFLY_ROI_GIMBAL">
+        <description>Do nothing</description>
+      </entry>
+      <entry value="2" name="VKFLY_ROI_DRONE_HEAD">
+        <description>Do nothing</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_ARM_DENIED_REASON">
+      <description>Arm denied reason for VKFLY</description>
+      <entry value="0" name="VKFLY_ARM_DENIED_REASON_NONE"></entry>
+      <entry value="1" name="VKFLY_ARM_DENIED_NO_INS"> </entry>
+      <entry value="2" name="VKFLY_ARM_DENIED_SPD_OVER_LIM"></entry>
+      <entry value="3" name="VKFLY_ARM_DENIED_ACC_OVER_LIM"></entry>
+      <entry value="4" name="VKFLY_ARM_DENIED_GYR_OVER_LIM"></entry>
+      <entry value="5" name="VKFLY_ARM_DENIED_GPS_ERR"></entry>
+      <entry value="6" name="VKFLY_ARM_DENIED_IMU_ERR"></entry>
+      <entry value="7" name="VKFLY_ARM_DENIED_POS_NOT_FIXED"></entry>
+      <entry value="8" name="VKFLY_ARM_DENIED_RTK_NOT_FIXED"></entry>
+      <entry value="9" name="VKFLY_ARM_DENIED_MAG_ERR"></entry>
+      <entry value="10" name="VKFLY_ARM_DENIED_RESERVE"></entry>
+      <entry value="11" name="VKFLY_ARM_DENIED_TEMP_OVER_LIM"></entry>
+      <entry value="13" name="VKFLY_ARM_DENIED_OUT_FENCE"></entry>
+      <entry value="14" name="VKFLY_ARM_DENIED_LOW_BAT_VOLT"></entry>
+      <entry value="15" name="VKFLY_ARM_DENIED_LOW_BAT_CAP"></entry>
+      <entry value="16" name="VKFLY_ARM_DENIED_BAT_BMS_FAULT"></entry>
+      <entry value="17" name="VKFLY_ARM_DENIED_SERVO_FAULT"></entry>
+      <entry value="18" name="VKFLY_ARM_DENIED_LEAN_ANG"></entry>
+      <entry value="19" name="VKFLY_ARM_DENIED_IN_CALIBRATION"></entry>
+      <entry value="20" name="VKFLY_ARM_DENIED_HYDRO_BMS_CHECK_ERR"></entry>
+      <entry value="21" name="VKFLY_ARM_DENIED_FUEL_LOW"></entry>
+      <entry value="22" name="VKFLY_ARM_DENIED_H2P_LOW"></entry>
+      <entry value="23" name="VKFLY_ARM_DENIED_EXT_NAV_ERR"></entry>
+    </enum>
+
+    <enum name="VKFLY_MAGCALIB_STAGE">
+      <description>VKins magcalib stage</description>
+      <entry value="0" name="VK_MAGCALIB_NONE">
+        <description>Not in calibration.</description>
+      </entry>
+      <entry value="1" name="VK_MAGCALIB_XY">
+        <description>Calibrating X-Y level.</description>
+      </entry>
+      <entry value="2" name="VK_MAGCALIB_XZ">
+        <description>Calibrating X-Z level.</description>
+      </entry>
+      <entry value="3" name="VK_MAGCALIB_DONE">
+        <description>Calibrating successfully done.</description>
+      </entry>
+      <entry value="4" name="VK_MAGCALIB_FAIL">
+        <description>Calibrating failed.</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_SYS_STATUS_SENSOR_EXTEND" bitmask="true">
+      <description>For SYS_STATUS sensor extend flag use.</description>
+      <entry value="4" name="VKFLY_SYS_STATUS_SENSOR_GPS2">
+        <description>GPS2</description>
+      </entry>
+      <entry value="8" name="VKFLY_SYS_STATUS_SENSOR_RTK_GPS">
+        <description>RTK GPS</description>
+      </entry>
+      <entry value="16" name="VKFLY_SYS_STATUS_SDCARD">
+        <description>Onboard SD card</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_SYS_ERROR1" bitmask="true">
+      <description>bitmap for SYS_STATUS error1 </description>
+      <entry value="1" name="VKFLY_SYS_ERROR1_GCS_LINK_LOST">
+        <description>Gcs link lost.</description>
+      </entry>
+      <entry value="2" name="VKFLY_SYS_ERROR1_VOLTAGE_LOW">
+        <description>Battery voltage low.</description>
+      </entry>
+      <entry value="4" name="VKFLY_SYS_ERROR1_MOTOR_BALANCE">
+        <description>Servo output balance bad.</description>
+      </entry>
+      <entry value="8" name="VKFLY_SYS_ERROR1_MOTOR_FAIL">
+        <description>Servo ouput fault.</description>
+      </entry>
+      <entry value="16" name="VKFLY_SYS_ERROR1_OVERHEAT">
+        <description>Autopilot system temperature too high.</description>
+      </entry>
+      <entry value="32" name="VKFLY_SYS_ERROR1_INS_INVALID">
+        <description>Autopilot system solved positioning not ready.</description>
+      </entry>
+      <entry value="64" name="VKFLY_SYS_ERROR1_OUT_FENCE">
+        <description>Position out of fence range.</description>
+      </entry>
+      <entry value="128" name="VKFLY_SYS_ERROR1_OBV_LINK_LOST">
+        <description>Obv mavlink com link lost.</description>
+      </entry>
+      <entry value="256" name="VKFLY_SYS_ERROR1_BATBMS_LINK_LOST">
+        <description>Battery bms link lost.</description>
+      </entry>
+      <entry value="512" name="VKFLY_SYS_ERROR1_ECU_FUEL_LOW">
+        <description>ECU fuel percentage low.</description>
+      </entry>
+      <entry value="1024" name="VKFLY_SYS_ERROR1_ECU_LINK_LOST">
+        <description>ECU linklost.</description>
+      </entry>
+      <entry value="2048" name="VKFLY_SYS_ERROR1_H2P_LOW">
+        <description>H2 pressure low.</description>
+      </entry>
+      <entry value="4096" name="VKFLY_SYS_ERROR1_OVER_WEIGHT">
+        <description>Over weight.</description>
+      </entry>
+      <entry value="8192" name="VKFLY_SYS_ERROR1_OBSTACLE_AVOID">
+        <description>Obstacle avoid.</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_SYS_ERROR3" bitmask="true">
+      <description>bitmap for SYS_STATUS error3 </description>
+      <entry value="1" name="VKFLY_SYS_ERROR3_MAG0_DISTURB">
+        <description></description>
+      </entry>
+      <entry value="2" name="VKFLY_SYS_ERROR3_MAG1_DISTURB">
+        <description></description>
+      </entry>
+      <entry value="4" name="VKFLY_SYS_ERROR3_IMU0_ERROR">
+        <description></description>
+      </entry>
+      <entry value="8" name="VKFLY_SYS_ERROR3_IMU1_ERROR">
+        <description></description>
+      </entry>
+      <entry value="16" name="VKFLY_SYS_ERROR3_BARO0_ERROR">
+        <description></description>
+      </entry>
+      <entry value="32" name="VKFLY_SYS_ERROR3_GPS0_ERROR">
+        <description></description>
+      </entry>
+      <entry value="64" name="VKFLY_SYS_ERROR3_GPS1_ERROR">
+        <description></description>
+      </entry>
+      <entry value="128" name="VKFLY_SYS_ERROR3_RTK_ERROR">
+        <description></description>
+      </entry>
+      <entry value="256" name="VKFLY_SYS_ERROR3_YAW_DIFF">
+        <description></description>
+      </entry>
+      <entry value="512" name="VKFLY_SYS_ERROR3_ASPD_LINK_LOST">
+        <description></description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_CUSTOM_MODE">
+      <description>custom mode in HEARTBEAT</description>
+      <entry value="1" name="VKFLY_CUSTOM_MODE_STANDBY">
+        <description>Standby mode</description>
+      </entry>
+      <entry value="3" name="VKFLY_CUSTOM_MODE_ATTITUDE">
+        <description>Attitude mode</description>
+      </entry>
+      <entry value="4" name="VKFLY_CUSTOM_MODE_POSHOLD">
+        <description>Poshold mode</description>
+      </entry>
+      <entry value="10" name="VKFLY_CUSTOM_MODE_TAKEOFF">
+        <description>Auto takeoff.</description>
+      </entry>
+      <entry value="11" name="VKFLY_CUSTOM_MODE_LOITER">
+        <description>Auto loiter.</description>
+      </entry>
+      <entry value="12" name="VKFLY_CUSTOM_MODE_RTL">
+        <description>Auto return.</description>
+      </entry>
+      <entry value="13" name="VKFLY_CUSTOM_MODE_FLY_TO_WP">
+        <description>Auto fly to wp.</description>
+      </entry>
+      <entry value="15" name="VKFLY_CUSTOM_MODE_CRUISE">
+        <description>Auto cruise.</description>
+      </entry>
+      <entry value="18" name="VKFLY_CUSTOM_MODE_GUIDE">
+        <description>Guide to point.</description>
+      </entry>
+      <entry value="19" name="VKFLY_CUSTOM_MODE_LAND">
+        <description>Land.</description>
+      </entry>
+      <entry value="20" name="VKFLY_CUSTOM_MODE_FSLAND">
+        <description>Force land.</description>
+      </entry>
+      <entry value="21" name="VKFLY_CUSTOM_MODE_FOLLOW">
+        <description>Follow.</description>
+      </entry>
+      <entry value="23" name="VKFLY_CUSTOM_MODE_WP_ORBIT">
+        <description>Waypoint orbit</description>
+      </entry>
+      <entry value="24" name="VKFLY_CUSTOM_MODE_DYN_TAKEOFF">
+        <description>Dynamic takeoff</description>
+      </entry>
+      <entry value="25" name="VKFLY_CUSTOM_MODE_DYN_LAND">
+        <description>Dyn_Land</description>
+      </entry>
+      <entry value="26" name="VKFLY_CUSTOM_MODE_OBAVOID">
+        <description>Obavoid </description>
+      </entry>
+      <entry value="27" name="VKFLY_CUSTOM_MODE_OFFBOARD">
+        <description>Offboard command control.</description>
+      </entry>
+      <entry value="28" name="VKFLY_CUSTOM_MODE_FORMATION">
+        <description>Formation fly mode</description>
+      </entry>
+      <entry value="51" name="VKFLY_CUSTOM_MODE_FW_MANUL">
+        <description>Fixedwing manul mode</description>
+      </entry>
+      <entry value="52" name="VKFLY_CUSTOM_MODE_FW_ATTITUDE">
+        <description>Fixedwing attitude mode</description>
+      </entry>
+      <entry value="53" name="VKFLY_CUSTOM_MODE_FW_CRUISE">
+        <description>Fixedwing cruise mode</description>
+      </entry>
+      <entry value="54" name="VKFLY_CUSTOM_MODE_FW_CIRCLE">
+        <description>Fixedwing circle mode</description>
+      </entry>
+      <entry value="55" name="VKFLY_CUSTOM_MODE_FW_TAKEOFF">
+        <description>Fixedwing circle mode</description>
+      </entry>
+      <entry value="56" name="VKFLY_CUSTOM_MODE_FW_GUIDE">
+        <description>Fixedwing guide mode</description>
+      </entry>
+      <entry value="57" name="VKFLY_CUSTOM_MODE_FW_LAND">
+        <description>Fixedwing land mode</description>
+      </entry>
+      <entry value="58" name="VKFLY_CUSTOM_MODE_FW_RTL">
+        <description>Fixedwing return to launch mode</description>
+      </entry>
+      <entry value="59" name="VKFLY_CUSTOM_MODE_FW_GPS_FS">
+        <description>Fixedwing GPS fail safe mode</description>
+      </entry>
+      <entry value="60" name="VKFLY_CUSTOM_MODE_PARACHUTE">
+        <description>Open parachute mode</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_VKINS_NAV_STATUS" bitmask="true">
+      <description>bitmap for VKins navigtion status </description>
+      <entry value="0x01" name="VKFLY_VKINS_NAV_INSGPS">
+        <description>INS status. 0 means no INS. 1 means INS ok.</description>
+      </entry>
+      <entry value="0x02" name="VKFLY_VKINS_NAV_ALT_GPS">
+        <description>GPS altitude in data fusion. 0 gps altitude not used. 1 gps altitude used.</description>
+      </entry>
+      <entry value="0x04" name="VKFLY_VKINS_NAV_HEADING_RTK">
+        <description>RTK heading data. 0 use mag, 1 use rtk dual ant heading.</description>
+      </entry>
+      <entry value="0x10" name="VKFLY_VKINS_NAV_RTK">
+        <description>RTK pos data. 0 no RTK, 1 RTK. </description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_YAW_CTRL_MODE">
+      <description>Yaw control mode</description>
+      <entry value="0" name="VKFLY_YAW_KEEP_CURRENT">
+        <description>Yaw do not change. Keep current yaw.</description>
+      </entry>
+      <entry value="1" name="VKFLY_YAW_TO_NEXT_WP">
+        <description>Yaw towards next waypoint or circle center.</description>
+      </entry>
+      <entry value="2" name="VKFLY_YAW_TO_TRACE_COURSE">
+        <description>Yaw towards moving course heading.</description>
+      </entry>
+      <entry value="3" name="VKFLY_YAW_TO_SET_VALUE">
+        <description>Yaw towards spacific value.</description>
+      </entry>
+      <entry value="4" name="VKFLY_YAW_TO_HOME">
+        <description>Yaw towards home point.</description>
+      </entry>
+      <entry value="5" name="VKFLY_YAW_TO_INTEREST">
+        <description>Yaw towards interest point.</description>
+      </entry>
+      <entry value="6" name="VKFLY_YAW_TO_OTHER_MAV_SYS">
+        <description>Yaw towards interest point.</description>
+      </entry>
+      <entry value="7" name="VKFLY_YAW_TO_SET_VALUE_ONLY_ON_LANDING">
+        <description>Yaw towards interest point.</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_PHOTO_CTRL_MODE">
+      <description>Digicam auto take photo mode.</description>
+      <entry value="0" name="VKFLY_AUTO_PHO_KEEP_CURRENT">
+        <description>Do not take photo automatically.</description>
+      </entry>
+      <entry value="1" name="VKFLY_AUTO_PHO_STOP">
+        <description>Do not take photo automatically.</description>
+      </entry>
+      <entry value="2" name="VKFLY_AUTO_PHO_AUTO_BY_TIME">
+        <description>Automatically take photo by tiem.</description>
+      </entry>
+      <entry value="3" name="VKFLY_AUTO_PHO_BY_DIST_XY">
+        <description>Automatically take photo by distance.</description>
+      </entry>
+      <entry value="4" name="VKFLY_AUTO_PHO_BY_DIST_Z">
+        <description>Automatically take photo by input trigger signal or command.</description>
+      </entry>
+      <entry value="5" name="VKFLY_AUTO_PHO_BY_DIST_XYZ">
+        <description>Automatically take photo by input trigger signal or command.</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_RTL_REASON">
+      <description>Digicam auto take photo mode.</description>
+      <entry value="0" name="VKFLY_RTL_REASON_NONE">
+        <description>Rtl mode not triggered.</description>
+      </entry>
+      <entry value="1" name="VKFLY_RTL_REASON_GCSCMD">
+        <description>Trigger rtl mode by gcs command.</description>
+      </entry>
+      <entry value="2" name="VKFLY_RTL_REASON_RCCMD">
+        <description>Trigger rtl mode by remote controller command.</description>
+      </entry>
+      <entry value="3" name="VKFLY_RTL_REASON_GCSLOST">
+        <description>Trigger rtl mode by gcs link lost.</description>
+      </entry>
+      <entry value="4" name="VKFLY_RTL_REASON_RCFAIL">
+        <description>Trigger rtl mode by remote controller signal fail.</description>
+      </entry>
+      <entry value="5" name="VKFLY_RTL_REASON_RCLOST">
+        <description>Trigger rtl mode by remote controller signal lost.</description>
+      </entry>
+      <entry value="6" name="VKFLY_RTL_REASON_LOWVOLT">
+        <description>Trigger rtl mode by battery volt low.</description>
+      </entry>
+      <entry value="7" name="VKFLY_RTL_REASON_OFFBOARD">
+        <description>Trigger rtl mode by offboard command.</description>
+      </entry>
+      <entry value="8" name="VKFLY_RTL_REASON_ALTLIM">
+        <description>Trigger rtl mode by altitude limit.</description>
+      </entry>
+      <entry value="9" name="VKFLY_RTL_REASON_OUT_FENCE">
+        <description>Trigger rtl mode by out range of fence.</description>
+      </entry>
+      <entry value="10" name="VKFLY_RTL_REASON_BMS_LOWCAP">
+        <description>Trigger rtl mode by battery manager system low capacity.</description>
+      </entry>
+      <entry value="11" name="VKFLY_RTL_REASON_BMS_LINKLOST">
+        <description>Trigger rtl mode by battery manager link lost.</description>
+      </entry>
+      <entry value="12" name="VKFLY_RTL_REASON_SERVO_FAULT">
+        <description>Trigger rtl mode by servo fault.</description>
+      </entry>
+      <entry value="13" name="VKFLY_RTL_REASON_WP_FINISH">
+        <description>Trigger rtl mode by servo fault.</description>
+      </entry>
+      <entry value="14" name="VKFLY_RTL_REASON_H2P_LOW">
+        <description>Trigger rtl mode by servo fault.</description>
+      </entry>
+      <entry value="15" name="VKFLY_RTL_REASON_ECU_FUEL_LOW">
+        <description>Trigger rtl mode by servo fault.</description>
+      </entry>
+      <entry value="16" name="VKFLY_RTL_REASON_ATTITUDE_FS">
+        <description>Trigger rtl mode by attitude failsafe.</description>
+      </entry>
+      <entry value="17" name="VKFLY_RTL_REASON_TRANS_TMO">
+        <description>Trigger rtl mode by transform time out.</description>
+      </entry>
+      <entry value="18" name="VKFLY_RTL_REASON_ASPD_LOW">
+        <description>Trigger rtl mode by transform time out.</description>
+      </entry>
+      <entry value="19" name="VKFLY_RTL_REASON_FMUB_TAKEOVER">
+        <description>Trigger rtl mode by fmub takeover.</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_LOITER_REASON">
+      <entry value="1" name="VLFLY_LOITER_REASON_DEFAULT"></entry>
+      <entry value="2" name="VLFLY_LOITER_REASON_GCS_CMD"></entry>
+      <entry value="3" name="VLFLY_LOITER_REASON_MISSION_DONE"></entry>
+      <entry value="5" name="VLFLY_LOITER_REASON_GPS_REABLE"></entry>
+      <entry value="6" name="VLFLY_LOITER_REASON_RC_CMD"></entry>
+      <entry value="7" name="VLFLY_LOITER_REASON_FOLLOW_FAIL"></entry>
+      <entry value="9" name="VLFLY_LOITER_REASON_TAKEOFF_DONE"></entry>
+      <entry value="10" name="VLFLY_LOITER_REASON_BAT_VOLT_LOW"></entry>
+      <entry value="11" name="VLFLY_LOITER_REASON_RC_FAIL"></entry>
+      <entry value="12" name="VLFLY_LOITER_REASON_RC_LOST"></entry>
+      <entry value="13" name="VLFLY_LOITER_REASON_RC_BAD"></entry>
+      <entry value="14" name="VLFLY_LOITER_REASON_BAT_CAP_LOW"></entry>
+      <entry value="15" name="VLFLY_LOITER_REASON_OFFBOARD"></entry>
+      <entry value="16" name="VLFLY_LOITER_REASON_QUIT_FORMATION"></entry>
+      <entry value="17" name="VLFLY_LOITER_REASON_H2P_LOW"></entry>
+      <entry value="18" name="VLFLY_LOITER_REASON_ECU_FUEL_LOW"></entry>
+      <entry value="19" name="VLFLY_LOITER_REASON_FMUB_TAKEOVER"></entry>
+      <entry value="21" name="VLFLY_LOITER_REASON_WPDATA_ERR"></entry>
+    </enum>
+
+    <enum name="VKFLY_DIGICAM_WP_ACT">
+      <description>Digicam action trigger on waypoint arrive.</description>
+      <entry value="0" name="VKFLY_DIGICAM_WP_ACT_NONE">
+        <description>Do nothing.</description>
+      </entry>
+      <entry value="1" name="VKFLY_DIGICAM_WP_ACT_PHO">
+        <description>Do take photo.</description>
+      </entry>
+      <entry value="2" name="VKFLY_DIGICAM_WP_ACT_VEDIO_ON">
+        <description>Do vedio recording on.</description>
+      </entry>
+      <entry value="3" name="VKFLY_DIGICAM_WP_ACT_VEDIO_OFF">
+        <description>Do vedio recording off.</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_GIMBAL_WP_ACT">
+      <description>Gimbal action trigger on waypoint arrive.</description>
+      <entry value="0" name="VKFLY_GIMBAL_WP_ACT_NONE">
+        <description>Do nothing.</description>
+      </entry>
+      <entry value="1" name="VKFLY_GIMBAL_WP_ACT_SET_ANG">
+        <description>Do set gimbal pitch and yaw angle value.</description>
+      </entry>
+      <entry value="2" name="VKFLY_GIMBAL_WP_ACT_SET_PITCH_YAW_FOLLOW">
+        <description>Do set gimbla pitch value, yaw follow drone head.</description>
+      </entry>
+      <entry value="3" name="VKFLY_GIMBAL_WP_SET_ZOOM">
+        <description>Do set gimbla Zoom.</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_THROW_CHAN_TYPE" bitmask="true">
+      <description>bitmap of throwing channel</description>
+      <entry value="1" name="VKFLY_THROW_CHAN_1">
+        <description>throwing channel1</description>
+      </entry>
+      <entry value="2" name="VKFLY_THROW_CHAN_2">
+        <description>throwing channel2</description>
+      </entry>
+      <entry value="4" name="VKFLY_THROW_CHAN_3">
+        <description>throwing channel3</description>
+      </entry>
+      <entry value="8" name="VKFLY_THROW_CHAN_4">
+        <description>throwing channel4</description>
+      </entry>
+      <entry value="16" name="VKFLY_THROW_CHAN_5">
+        <description>throwing channel5</description>
+      </entry>
+      <entry value="32" name="VKFLY_THROW_CHAN_6">
+        <description>throwing channel6</description>
+      </entry>
+      <entry value="64" name="VKFLY_THROW_CHAN_7">
+        <description>throwing channel7</description>
+      </entry>
+      <entry value="128" name="VKFLY_THROW_CHAN_8">
+        <description>throwing channel8</description>
+      </entry>
+      <entry value="256" name="VKFLY_THROW_CHAN_9">
+        <description>throwing channel9</description>
+      </entry>
+      <entry value="512" name="VKFLY_THROW_CHAN_10">
+        <description>throwing channel10</description>
+      </entry>
+      <entry value="1024" name="VKFLY_THROW_CHAN_11">
+        <description>throwing channel11</description>
+      </entry>
+      <entry value="2048" name="VKFLY_THROW_CHAN_12">
+        <description>throwing channel12</description>
+      </entry>
+      <entry value="4096" name="VKFLY_THROW_CHAN_13">
+        <description>throwing channel12</description>
+      </entry>
+      <entry value="8192" name="VKFLY_THROW_CHAN_14">
+        <description>throwing channel12</description>
+      </entry>
+      <entry value="16384" name="VKFLY_THROW_CHAN_15">
+        <description>throwing channel12</description>
+      </entry>
+      <entry value="32768" name="VKFLY_THROW_CHAN_16">
+        <description>throwing channel12</description>
+      </entry>
+      <entry value="65535" name="VKFLY_THROW_CHAN_ALL">
+        <description>throwing channel12</description>
+      </entry>
+    </enum>
+
+    <enum name="VKFLY_MISSION_EXEC_MODE">
+      <entry value="0" name="VKFLY_MISSION_EXEC_MODE_NORMAL"></entry>
+      <entry value="1" name="VKFLY_MISSION_EXEC_MODE_NO_ACT"></entry>
+      <entry value="2" name="VKFLY_MISSION_EXEC_MODE_REVERSE"></entry>
+      <entry value="3" name="VKFLY_MISSION_EXEC_MODE_REVERSE_NO_ACT"></entry>
+    </enum>
+
+    <enum name="VKFLY_MISSION_DONE_ACT">
+      <entry value="0" name="VKFLY_MISSION_DONE_LOITER"></entry>
+      <entry value="1" name="VKFLY_MISSION_DONE_RETURN_TO_LAUNCH"></entry>
+      <entry value="2" name="VKFLY_MISSION_DONE_LAND"></entry>
+      <entry value="3" name="VKFLY_MISSION_DONE_RETURN_TO_RALLY"></entry>
+      <entry value="4" name="VKFLY_MISSION_DONE_RETURN_TO_LAUNCH_AB_WP"></entry>
+      <entry value="5" name="VKFLY_MISSION_DONE_RETURN_TO_LAUNCH_BA_WP"></entry>
+      <entry value="6" name="VKFLY_MISSION_DONE_THEN_REDO"></entry>
+      <entry value="7" name="VKFLY_MISSION_DONE_THEN_DEPLOY_PARACHUTE"></entry>
+    </enum>
+
+    <enum name="VKFLY_RTL_EXEC_MODE">
+      <entry value="0" name="VKFLY_RTL_EXEC_MODE_NORMAL"></entry>
+      <entry value="1" name="VKFLY_RTL_EXEC_MODE_BY_MISSION_SEQ"></entry>
+      <entry value="2" name="VKFLY_RTL_EXEC_MODE_BY_MISSION_SEQ_REVERSE"></entry>
+    </enum>
+
+    <enum name="VKFLY_FORMATION_TYPE">
+      <entry value="0" name="VKFLY_FORMATION_ROW"></entry>
+      <entry value="1" name="VKFLY_FORMATION_COLUM"></entry>
+      <entry value="2" name="VKFLY_FORMATION_TRIANGLE"></entry>
+      <entry value="3" name="VKFLY_FORMATION_RECTANGLE"></entry>
+      <entry value="4" name="VKFLY_FORMATION_CUSTOM"></entry>
+      <entry value="5" name="VKFLY_FORMATION_VERTICLE_LINE"></entry>
+    </enum>
+
+    <enum name="MAV_CMD">
+      <description> VKFLY custom CMD </description>
+      <entry value="44010" name="VKFLY_CMD_NAV_WP" hasLocation="true" isDestination="true">
+        <description>VKFLY custom takephoto waypoint commond.</description>
+        <param index="1" label="Hold Time And Speed"> </param>
+        <param index="2" label="Photo Ctl"> </param>
+        <param index="3" label="Gimbal Ctl"> </param>
+        <param index="4" label="Yaw Mode">Yaw control mode</param>
+        <param index="5" label="Latitude">Latitude</param>
+        <param index="6" label="Longitude">Longitude</param>
+        <param index="7" label="Altitude" units="m">Altitude</param>
+      </entry>
+
+      <entry value="44011" name="VKFLY_CMD_NAV_WP_THROW" hasLocation="true" isDestination="true">
+        <description>VKFLY custom throwing waypoint command. </description>
+        <param index="1" label="Hold Time And Speed"> </param>
+        <param index="2" label="Throw ParamA"></param>
+        <param index="3" label="Throw ParamB">Reserved.</param>
+        <param index="4" label="Yaw Mode">Yaw control mode.</param>
+        <param index="5" label="Latitude">Latitude</param>
+        <param index="6" label="Longitude">Longitude</param>
+        <param index="7" label="Altitude" units="m">Altitude</param>
+      </entry>
+
+      <entry value="44012" name="VKFLY_CMD_NAV_WP_ORBIT_DO_PHOTO" hasLocation="true"
+        isDestination="true">
+        <description>VLFLY Custom orbit waypoint </description>
+        <param index="1" label="Radius And Speed"> </param>
+        <param index="2" label="Photo Ctl"> </param>
+        <param index="3" label="Times And Orbit Speed"> </param>
+        <param index="4" label="Yaw Mode"> </param>
+        <param index="5" label="Latitude">Latitude</param>
+        <param index="6" label="Longitude">Longitude</param>
+        <param index="7" label="Altitude" units="m">Altitude</param>
+      </entry>
+
+      <entry value="44013" name="VKFLY_CMD_NAV_EDU_TRAINING" hasLocation="true"
+        isDestination="true">
+        <description>VLFLY Custom orbit waypoint </description>
+        <param index="1" label="Hold Time And Speed"> </param>
+        <param index="2" label="Alt Mode And Speed"> </param>
+        <param index="3" label="Param3"> </param>
+        <param index="4" label="Yaw Mode"> </param>
+        <param index="5" label="Latitude">Latitude</param>
+        <param index="6" label="Longitude">Longitude</param>
+        <param index="7" label="Altitude" units="m">Altitude</param>
+      </entry>
+
+      <entry value="44030" name="VKFLY_CMD_MOUNT_CTRL" hasLocation="true"
+        isDestination="true">
+        <description>VLFLY Custom orbit waypoint </description>
+        <param index="1" label=""> </param>
+        <param index="2" label="CTRL "> </param>
+        <param index="3" label="Times And Orbit Speed"> </param>
+        <param index="4" label="Yaw Mode"> </param>
+        <param index="5" label="Latitude">Latitude</param>
+        <param index="6" label="Longitude">Longitude</param>
+        <param index="7" label="Altitude" units="m">Altitude</param>
+      </entry>
+
+      <entry value="44031" name="VKFLY_CMD_FORMATION_FLY">
+        <description>Formation fly assemble, disband or change formation</description>
+        <param index="1" label="action">1 means assemble, 2 means quit, 3 means change formation</param>
+        <param index="2" label="form_type" enum="VKFLY_FORMATION_TYPE"></param>
+        <param index="3" label="rect_col_num"></param>
+        <param index="4" label="lock_head"></param>
+        <param index="5" label="x_dist" units="m"></param>
+        <param index="6" label="y_dist" units="m"></param>
+        <param index="7" label="z_dist" units="m"></param>
+      </entry>
+
+      <entry value="44050" name="VKFLY_CMD_ESC_CONFIG" hasLocation="false"
+        isDestination="false">
+        <description>can esc id configuration</description>
+        <param index="1" label="Set ID"> Set Esc id, minValue=1, maxValue=16 </param>
+        <param index="2" label=""> </param>
+        <param index="3" label=""> </param>
+        <param index="4" label=""> </param>
+        <param index="5" label=""> </param>
+        <param index="6" label=""> </param>
+        <param index="7" label=""> </param>
+      </entry>
+
+      <entry value="44051" name="VKFLY_CMD_RFD_CONFIG" hasLocation="false"
+        isDestination="false">
+        <description>can esc id configuration</description>
+        <param index="1" label="Target component"> target component id </param>
+        <param index="2" label="Set blind zone" units="m"> set blind zone, NAN means ignore </param>
+        <param index="3" label="Set max range" units="m"> set max range, NAN means ignore </param>
+        <param index="4" label=""> </param>
+        <param index="5" label=""> </param>
+        <param index="6" label=""> </param>
+        <param index="7" label=""> </param>
+      </entry>
+
+      <entry value="44060" name="VKFLY_CMD_DO_REPOSITION_THAN_THROW" hasLocation="true"
+        isDestination="true">
+        <description>Do reposition and throwing</description>
+        <param index="1" label="Throw servo id" minValue="0" maxValue="65535"> Throw servo id bitmap </param>
+        <param index="2" label="Throw altitude"> </param>
+        <param index="3" label="Speed"> </param>
+        <param index="4" label="Yaw"> </param>
+        <param index="5" label="Latitude"> </param>
+        <param index="6" label="Longitude"> </param>
+        <param index="7" label="Altitude" units="m"> </param>
+      </entry>
+
+      <entry value="44061" name="VKFLY_CMD_DO_REPOSITION_THAN_LAND" hasLocation="true"
+        isDestination="true">
+        <description>Do reposition and throwing</description>
+        <param index="1" label="Groud Msl" units="m"> Ground msl altitude</param>
+        <param index="2" label=""> </param>
+        <param index="3" label="Speed"> </param>
+        <param index="4" label="Yaw" units="deg" minValue="0" maxValue="359.99"> </param>
+        <param index="5" label="Latitude"> </param>
+        <param index="6" label="Longitude"> </param>
+        <param index="7" label="Altitude" units="m"> </param>
+      </entry>
+
+      <entry value="44062" name="VKFLY_CMD_MISSION_START" hasLocation="false"
+        isDestination="false">
+        <description>Start mission</description>
+        <param index="1" label="Start Seq" minValue="0" maxValue="65535">start sequence of mission</param>
+        <param index="2" label="Mission Exec Mode" enum="VKFLY_MISSION_EXEC_MODE"> </param>
+        <param index="3" label="Mission Done Action" enum="VKFLY_MISSION_DONE_ACT"> </param>
+        <param index="4" label=""> </param>
+        <param index="5" label=""> </param>
+        <param index="6" label=""> </param>
+        <param index="7" label=""> </param>
+      </entry>
+
+      <entry value="44063" name="VKFLY_CMD_RETURN_TO_LAUCH" hasLocation="false"
+        isDestination="false">
+        <description>Return to launch position than land</description>
+        <param index="1" label="Start Seq" minValue="0" maxValue="65535">start sequence of mission</param>
+        <param index="2" label="Rtl Exec Mode" enum="VKFLY_RTL_EXEC_MODE"> </param>
+        <param index="3" label=""> </param>
+        <param index="4" label=""> </param>
+        <param index="5" label=""> </param>
+        <param index="6" label=""> </param>
+        <param index="7" label=""> </param>
+      </entry>
+
+      <entry value="44064" name="VKFLY_CMD_WEIGHER_CONFIG" hasLocation="false"
+        isDestination="false">
+        <description>Weigher config command</description>
+        <param index="1" label="Weight Calibrate">NAN means invalid. Other positive value means the
+          actual weight</param>
+        <param index="2" label="Factory Reset">NAN means invalid. 1 means do factory reset.</param>
+        <param index="3" label="Fuse Break">NAN means invalid. 1 means do eft fuse break.</param>
+        <param index="4" label="Release Hook">NAN mean invalid.
+          1 means do release hook, 2 means restart hook, 3 means stop </param>
+        <param index="5" label="Weigher Orientation" units="deg" minValue="-180" maxValue="180">NAN
+          mean invalid. </param>
+        <param index="6" label=""> </param>
+        <param index="7" label=""> </param>
+      </entry>
+
+      <entry value="44065" name="VKFLY_CMD_DO_FIXEDWING_ACTUATOR_CHECK" hasLocation="false"
+        isDestination="false">
+        <description>Check fixedwing servos.</description>
+        <param index="1" label="actuator check" minValue="0" maxValue="9">NAN means ignore.0 do all
+          mid, 1 do roll mid, 2 do roll right, 3 do roll left, 4 do pitch mid, 5 do pitch up, 6 do
+          pitch down, 7 do yaw mid, 8 do yaw right, 9 do yaw down.</param>
+        <param index="2" label="throttle check" minValue="-1" maxValue="100"> NAN means ignore. -1
+          throttle off, 0 throttle idle, 100 throttle full </param>
+        <param index="3" label=""> </param>
+        <param index="4" label=""> </param>
+        <param index="5" label=""> </param>
+        <param index="6" label=""> </param>
+        <param index="7" label=""> </param>
+      </entry>
+
+      <entry value="44066" name="VKFLY_CMD_SET_RTL_CIRCLE_WP" hasLocation="true"
+        isDestination="false">
+        <description>Set return circle point.</description>
+        <param index="1" label="Radius">NAN means use default circle radius. Positive value means
+          circle
+          in clockwise.</param>
+        <param index="2" label="DoNow"> NAN means ignore. 1 means do goto rtl circle point right
+          now.
+        </param>
+        <param index="3" label=""> </param>
+        <param index="4" label=""> </param>
+        <param index="5" label="Latitude"> </param>
+        <param index="6" label="Longitude"> </param>
+        <param index="7" label="Alt"> </param>
+      </entry>
+
+      <entry value="44067" name="VKFLY_CMD_MISSION_START_EDU_TRAINING" hasLocation="false"
+        isDestination="false">
+        <description>Start mission</description>
+        <param index="1" label="Start Seq" minValue="0" maxValue="65535">start sequence of mission</param>
+        <param index="2" label="Loop Count"> </param>
+        <param index="3" label="Mission Done Action" enum="VKFLY_MISSION_DONE_ACT"> </param>
+        <param index="4" label=""> </param>
+        <param index="5" label=""> </param>
+        <param index="6" label=""> </param>
+        <param index="7" label=""> </param>
+      </entry>
+
+      <entry value="44068" name="VKFLY_CMD_RESUME_WP_ALT" hasLocation="false"
+        isDestination="false">
+        <description>Start mission</description>
+        <param index="1" label="disable" minValue="0" maxValue="1">resume wp altitude and disable rc
+          aux</param>
+        <param index="2" label=""></param>
+        <param index="3" label=""></param>
+        <param index="4" label=""></param>
+        <param index="5" label=""></param>
+        <param index="6" label=""></param>
+        <param index="7" label=""></param>
+      </entry>
+
+      <entry value="44069" name="VKFLY_CMD_EXT_NAV_CFG" hasLocation="false"
+        isDestination="false">
+        <description>Start mission</description>
+        <param index="1" label="conf" minValue="0" maxValue="2"></param>
+        <param index="2" label="type"></param>
+        <param index="3" label=""></param>
+        <param index="4" label=""></param>
+        <param index="5" label=""></param>
+        <param index="6" label=""></param>
+        <param index="7" label=""></param>
+      </entry>
+
+      <entry value="44070" name="VKFLY_CMD_DO_REPOSITION" hasLocation="true"
+        isDestination="true">
+        <description>Do reposition</description>
+        <param index="1" label=""></param>
+        <param index="2" label=""></param>
+        <param index="3" label=""></param>
+        <param index="4" label="yaw" units="deg" minValue="0" maxValue="359.99"> NAN means ignore </param>
+        <param index="5" label="x" units="m"> NAN means ignore </param>
+        <param index="6" label="y" units="m"> NAN means ignore </param>
+        <param index="7" label="z" units="m"> NAN means ignore </param>
+      </entry>
+
+      <entry value="44071" name="VKFLY_CMD_DYNAMIC_ACT" hasLocation="true"
+        isDestination="true">
+        <description>Vehicle act</description>
+        <param index="1" label="action" minValue="0" maxValue="2">NAN means ignore.0 do
+          dynamic_takeoff,
+          1 do dynamic_land, 2 do dynamic_follow</param>
+        <param index="2" label=""></param>
+        <param index="3" label=""></param>
+        <param index="4" label=""></param>
+        <param index="5" label=""></param>
+        <param index="6" label=""></param>
+        <param index="7" label=""></param>
+      </entry>
+
+      <entry value="44072" name="VKFLY_CMD_DO_REPOSITION_THAN_DO_PARACHUTE" hasLocation="true"
+        isDestination="true">
+        <description>Do reposition then deploy parachute</description>
+        <param index="1" label="">Deploy distance</param>
+        <param index="2" label=""> </param>
+        <param index="3" label="Speed"> </param>
+        <param index="4" label=""> </param>
+        <param index="5" label="Latitude"> </param>
+        <param index="6" label="Longitude"> </param>
+        <param index="7" label="Altitude" units="m"> </param>
+      </entry>
+
+      <entry value="44073" name="VKFLY_CMD_CLEAR_SERVO_DISPALY" hasLocation="false"
+        isDestination="false">
+        <description>Vehicle act</description>
+        <param index="1" label="clear dispaly" minValue="0" maxValue="1">NAN means ignore. 1 means
+          clear servo status dispaly</param>
+        <param index="2" label=""></param>
+        <param index="3" label=""></param>
+        <param index="4" label=""></param>
+        <param index="5" label=""></param>
+        <param index="6" label=""></param>
+        <param index="7" label=""></param>
+      </entry>
+    </enum>
+  </enums>
+
+  <messages>
+    <message id="53000" name="VKINS_STATUS">
+      <description> </description>
+      <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp in ms from system boot.</field>
+      <field type="uint8_t" name="nav_status" enum="VKFLY_VKINS_NAV_STATUS" display="bitmask"
+        print_format="0x%02x">VKINS
+        navigation status flag.</field>
+      <field type="uint8_t" name="s_flag1">vinks flag1</field>
+      <field type="uint8_t" name="s_flag2">vinks flag2.</field>
+      <field type="uint8_t" name="s_flag3">vinks flag3.</field>
+      <field type="uint8_t" name="s_flag4">vinks flag4.</field>
+      <field type="uint8_t" name="s_flag5">vinks flag5.</field>
+      <field type="uint8_t" name="s_flag6">vinks flag6.</field>
+      <field type="uint8_t" name="mag_calib_stage" enum="VKFLY_MAGCALIB_STAGE">vkins mag calib
+        stage.</field>
+      <field type="float" name="g0" units="m/s/s">vkins initial calibrated gravitation acceleration.</field>
+      <field type="int32_t" name="raw_latitude" units="degE7">raw longitude for data fusion</field>
+      <field type="int32_t" name="raw_longitude" units="degE7">raw latitidue for data fusion</field>
+      <field type="float" name="baro_alt" units="m">raw baromoter altitude for data fusion</field>
+      <field type="float" name="raw_gps_alt" units="m">gps amsl altitude for data fusion</field>
+      <field type="uint8_t" name="solv_psat_num">satelites number for position</field>
+      <field type="uint8_t" name="solv_hsat_num">satelites number for heading</field>
+      <field type="int16_t" name="temperature" units="degC">temperature</field>
+      <field type="uint8_t" name="vibe_coe"></field>
+    </message>
+
+    <message id="53001" name="VKFMU_STATUS">
+      <description> </description>
+      <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp in ms from system boot.</field>
+      <field type="uint8_t" name="rtl_reason" enum="VKFLY_RTL_REASON">return to launch reason.</field>
+      <field type="uint8_t" name="loiter_reason" enum="VKFLY_LOITER_REASON">Loiter reason </field>
+      <field type="uint8_t" name="s_flag3">fmu sflag3</field>
+      <field type="uint16_t" name="ups_volt">ups voltage in 0.1V</field>
+      <field type="uint16_t" name="adc_volt">adc voltage in 0.1V</field>
+      <field type="uint32_t" name="flight_time" units="s">flight time in seconds</field>
+      <field type="uint32_t" name="dist_to_tar" units="cm">distance to target position in cm</field>
+      <field type="uint16_t" name="servo_state">bitmap for servo state</field>
+      <field type="float" name="flight_dist" units="m">flight distance since this power up</field>
+      <extensions />
+      <field type="uint16_t" name="servo_display">bitmap for servo state display</field>
+    </message>
+
+    <message id="53002" name="VK_ROI_TARGET">
+      <description> </description>
+      <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp in ms from system boot.</field>
+      <field type="int32_t" name="lat" units="degE7">wgs48 latitude</field>
+      <field type="int32_t" name="lon" units="degE7">wgs48 longitude</field>
+      <field type="float" name="alt" units="m">altitude amsl, wgs48</field>
+      <field type="uint16_t" name="state" enum="VKFLY_ROI_STATE">Bitmap to indicate ROI state </field>
+    </message>
+
+    <message id="53003" name="VK_BMS_STATUS">
+      <description> battery bms status message </description>
+      <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp in ms from system boot.</field>
+      <field type="uint32_t" name="voltage" units="mV">BMS voltage in mV</field>
+      <field type="int32_t" name="current" units="cA">BMS current in cA, negative value means in
+        charging</field>
+      <field type="int16_t" name="temperature" units="degC">BMS temperature in degC</field>
+      <field type="int8_t" name="cap_percent" units="%">BMS remaining power in percentage</field>
+      <field type="uint8_t" name="bat_id" minValue="0" maxValue="1" increment="1">BMS id, start from
+        0</field>
+      <field type="uint32_t" name="err_code" display="bitmask" print_format="0x%04x">BMS error code,
+        0 means no error</field>
+      <field type="uint16_t" name="cell_num" minValue="0" maxValue="100">BMS cell numbers</field>
+      <field type="uint16_t[30]" name="cell_volt" units="mV">BMS cell voltage in mV</field>
+      <field type="uint16_t" name="cyc_cnt" minValue="0" increment="1"> charge and discharge times </field>
+      <field type="uint8_t" name="health" minValue="0" maxValue="100">battery healthiness in
+        percentage</field>
+    </message>
+
+    <message id="53004" name="VK_FORMATION_LEADER">
+      <description> formation fly leader status message </description>
+      <field type="uint32_t" name="timestamp" units="ms">Timestamp in ms from system boot.</field>
+      <field type="uint32_t" name="state">formation leader drone state bitmap</field>
+      <field type="int32_t" name="lat" units="degE7">formation leader latitude in 1e-7deg </field>
+      <field type="int32_t" name="lon" units="degE7">formation leader longitude in 1e-7deg</field>
+      <field type="float" name="msl" units="m">formation leader msl altitude in meter</field>
+      <field type="float" name="ve" units="m/s">formation leader east speed</field>
+      <field type="float" name="vn" units="m/s">formation leader north speed</field>
+      <field type="float" name="vu" units="m/s">formation leader up speed</field>
+      <field type="float" name="yaw" units="deg">formation leader yaw</field>
+      <field type="uint8_t" name="formation_type" enum="VKFLY_FORMATION_TYPE">formation type</field>
+      <field type="int16_t" name="x_dist" units="cm">distance between drones in x axis</field>
+      <field type="int16_t" name="y_dist" units="cm">distance between drones in y axis</field>
+      <field type="int16_t" name="z_dist" units="cm">distance between drones in z axis</field>
+      <field type="uint16_t" name="rect_col_num">columns number of rectangle formation</field>
+      <extensions />
+      <field type="float" name="formation_heading" units="deg">if nan, use yaw as formation heading</field>
+      <field type="float" name="form_head_lock">0 unlock, 1 lock</field>
+    </message>
+
+    <message id="53005" name="VK_ENGINE_ECU_STAUS">
+      <description> engine ecu status message </description>
+      <field type="uint32_t" name="timestamp" units="ms">Timestamp in ms from system boot.</field>
+      <field type="uint16_t" name="spd_rpm">rotational speed in rpm</field>
+      <field type="uint8_t" name="thr_pos" units="%" minValue="0" maxValue="100" increment="1">throttle
+        position </field>
+      <field type="uint8_t" name="fuel_pos" units="%" minValue="0" maxValue="100" increment="1">fuel
+        position</field>
+      <field type="int16_t" name="cylinderA_temp" units="degC">CylinderA head temperature</field>
+      <field type="int16_t" name="cylinderB_temp" units="degC">CylinderB head temperature</field>
+      <field type="int16_t" name="coolant_temp" units="degC">coolant head temperature</field>
+      <field type="uint16_t" name="fuel_remain">engine index</field>
+      <field type="uint16_t" name="alarm">range extender alarm bitmap</field>
+      <field type="uint32_t" name="total_runtime" units="min">range extender output voltage</field>
+      <field type="uint16_t" name="runtime" units="min">range extender output voltage</field>
+      <field type="uint16_t" name="service_time" units="min">left time for service</field>
+      <field type="uint16_t" name="output_volt" units="dV">range extender output voltage</field>
+      <field type="uint16_t" name="output_curr" units="dA">range extender output current</field>
+      <field type="uint8_t" name="fault">engine fault</field>
+      <field type="uint8_t" name="engine_state">engine state</field>
+      <field type="uint8_t" name="index" minValue="0" maxValue="128" increment="1">engine index</field>
+      <field type="uint8_t[4]" name="reserve">engine state</field>
+      <extensions />
+      <field type="uint16_t" name="inlet_pressure" units="hPa">inlet air pressure</field>
+      <field type="int16_t" name="ge_temp" units="degC">Ge temperature</field>
+      <field type="int16_t" name="air_temp" units="degC">air temperature</field>
+      <field type="int16_t" name="temp_1" units="degC">temperature 1</field>
+      <field type="int16_t" name="volt_2" units="dV">volt 2</field>
+    </message>
+
+    <message id="53006" name="VK_COMP_VERSION">
+      <description>vkfly gps version</description>
+      <field type="uint16_t" name="comp_id" enum="VKFLY_USER_COMP_ID">component id</field>
+      <field type="uint8_t[16]" name="hw_ver">hardware version</field>
+      <field type="uint8_t[16]" name="fw_ver">firmware version</field>
+      <field type="uint8_t[16]" name="SN">SN number</field>
+      <field type="uint8_t[16]" name="manufactory">manufactory</field>
+      <field type="uint8_t[16]" name="model">model</field>
+      <field type="uint8_t[16]" name="priv_data">gnss configuration</field>
+    </message>
+
+    <message id="53007" name="VK_MOSAICH_GPS_RAW">
+      <description>Mosaic_h gps raw data</description>
+      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since
+        system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system
+        boot) by checking for the magnitude of the number.</field>
+      <field type="uint8_t" name="fix_type" enum="GPS_FIX_TYPE">GPS fix type.</field>
+      <field type="uint8_t" name="psv_num">Number of satellites for positioning ANT</field>
+      <field type="uint8_t" name="pvt_err">refer to mosaic_h reference page 308</field>
+      <field type="uint8_t" name="pvt_mode">refer to mosaic_h reference page 308</field>
+      <field type="int32_t" name="lat" units="degE7">Latitude (WGS84, EGM96 ellipsoid)</field>
+      <field type="int32_t" name="lon" units="degE7">Longitude (WGS84, EGM96 ellipsoid)</field>
+      <field type="float" name="ellipsoid_alt" units="m">Altitude (Ellipsoild). Positive for up.</field>
+      <field type="float" name="ve" units="m/s">Ease speed in m/s.</field>
+      <field type="float" name="vn" units="m/s">North speed in m/s.</field>
+      <field type="float" name="vu" units="m/s">Up speed in m/s.</field>
+      <field type="uint16_t" name="h_acc" units="cm">Position uncertainty.</field>
+      <field type="uint16_t" name="v_acc" units="cm">Altitude uncertainty.</field>
+      <field type="float" name="yaw" units="deg">Attitude euler yaw.</field>
+      <field type="float" name="pitch" units="deg">Attitude euler pitch.</field>
+      <field type="uint8_t" name="hsv_num">Number of satellites for heading ANT</field>
+      <field type="uint8_t" name="att_err">refer to mosaic_h reference page 336.</field>
+      <field type="uint8_t" name="att_mode">refer to mosaic_h reference page 336.</field>
+      <field type="uint8_t" name="reserved">reserved</field>
+    </message>
+
+    <message id="53008" name="VK_DIGI_ESC_STATUS">
+      <description>Mosaic_h gps raw data</description>
+      <field type="uint8_t" name="index" instance="true">Index of the first ESC in this message.
+        minValue = 0, maxValue = 60, increment = 4.</field>
+      <field type="uint32_t" name="timestamp" units="ms">Timestamp from system boot.</field>
+      <field type="int32_t[4]" name="rpm" units="rpm">Reported motor RPM from each ESC (negative for
+        reverse rotation).</field>
+      <field type="float[4]" name="voltage" units="V">Voltage measured from each ESC.</field>
+      <field type="float[4]" name="current" units="A">Current measured from each ESC.</field>
+      <field type="int16_t[4]" name="temperature" units="degC">Temperature measured from each ESC.</field>
+      <field type="uint32_t[4]" name="status">Status data from each ESC.</field>
+      <extensions />
+      <field type="int16_t[4]" name="motor_temp" units="degC">Motro temperature from each ESC.</field>
+      <field type="int16_t[4]" name="cap_temp" units="degC">Capacity temperature from each ESC.</field>
+      <field type="uint32_t[4]" name="status2">Status2 data from each ESC.</field>
+    </message>
+
+    <message id="53009" name="VK_FIXEDWING_CONTROL_VALUE">
+      <description>Mosaic_h gps raw data</description>
+      <field type="uint32_t" name="timestamp" units="ms">Timestamp from system boot.</field>
+      <field type="float" name="roll_value" minValue="-1.0" maxValue="1.0">Roll control value,
+        negative value means roll left.</field>
+      <field type="float" name="pitch_value" minValue="-1.0" maxValue="1.0">Pitch control value,
+        negative value means pitch down.</field>
+      <field type="float" name="throttle_value" minValue="-1.0" maxValue="1.0">Throttle control
+        value, negative value means throttle off</field>
+      <field type="float" name="yaw_value" minValue="-1.0" maxValue="1.0">Throttle control
+        value, negative value means turn left</field>
+    </message>
+
+    <message id="53010" name="VK_FIXEDWING_SERVO_SIGNAL">
+      <description>Mosaic_h gps raw data</description>
+      <field type="uint32_t" name="timestamp" units="ms">Timestamp from system boot.</field>
+      <field type="uint16_t[16]" name="servo_signal">Servo signal</field>
+    </message>
+
+
+    <message id="53011" name="VK_FIXEDWING_RTL_CIRCLE_WP">
+      <description></description>
+      <field type="int32_t" name="latitude" units="degE7">Latitude in wgs84</field>
+      <field type="int32_t" name="longitude" units="degE7">Longitude in wgs84</field>
+      <field type="float" name="altitude" units="m">Relativ altitude</field>
+      <field type="float" name="radius" units="m">Radius in m, NAN means use default radius.</field>
+    </message>
+
+    <message id="53012" name="VK_AIRSPEED">
+      <description>Airspeed information from a sensor.</description>
+      <field type="uint8_t" name="id" instance="true">Sensor ID.</field>
+      <field type="float" name="airspeed" units="m/s">Calibrated airspeed (CAS).</field>
+      <field type="int16_t" name="temperature" units="cdegC" invalid="INT16_MAX">Temperature.</field>
+      <field type="float" name="raw_press" units="hPa" invalid="NaN">Raw differential pressure.</field>
+      <field type="uint8_t" name="flags">Airspeed sensor flags.</field>
+    </message>
+
+    <message id="53020" name="VK_PARACHUTE_STATUS">
+      <description>parachute status</description>
+      <field type="uint32_t" name="timestamp" units="ms">timestamp from system boot</field>
+      <field type="uint8_t" name="state" minValue="0" maxValue="3" increment="1">parachute state</field>
+      <field type="uint8_t" name="auto_launch"> is auto launch enabled</field>
+      <field type="uint8_t" name="uav_cmd"> uav command from parachute</field>
+      <field type="uint16_t" name="err_code">parachute error code </field>
+      <field type="float" name="backvolt">parachute backup voltage</field>
+    </message>
+
+
+    <message id="53021" name="VK_WEIGHER_STATE">
+      <description>Weigher state</description>
+      <field type="uint32_t" name="timestamp" units="ms">timestamp from system boot</field>
+      <field type="uint32_t" name="weight" units="g">weight in gram</field>
+      <field type="uint16_t" name="weight_d">weight variant rate</field>
+      <field type="uint8_t" name="work_state"></field>
+      <field type="uint8_t" name="err_code"></field>
+      <extensions />
+      <field type="float[4]" name="attitude_Q"></field>
+    </message>
+
+    <message id="53022" name="VK_PAYLOAD_DATA_RELAY">
+      <description>VK payload message relay</description>
+      <field type="uint16_t" name="payload_addr">payload address code</field>
+      <field type="uint8_t" name="reserve">reserve</field>
+      <field type="uint8_t" name="data_len">data field length in bytes</field>
+      <field type="uint8_t[128]" name="data">data to relay</field>
+    </message>
+
+    <message id="53023" name="VK_EXTERNAL_INS_NAV">
+      <description>VK external INS navigation</description>
+      <field type="uint32_t" name="timestamp" units="ms">timestamp from system boot</field>
+      <field type="int32_t" name="lon" units="degE7">solved longitude</field>
+      <field type="int32_t" name="lat" units="degE7">solved latitude</field>
+      <field type="float" name="msl" units="m">solved latitude</field>
+      <field type="float" name="ve" units="m/s">solved east speed</field>
+      <field type="float" name="vn" units="m/s">solved north speed</field>
+      <field type="float" name="vu" units="m/s">solved up speed</field>
+      <field type="float" name="yaw" units="deg">yaw angle</field>
+      <field type="float" name="pitch" units="deg">pitch angle</field>
+      <field type="float" name="roll" units="deg">roll angle</field>
+      <field type="float" name="gx" units="deg/s">roll angle</field>
+      <field type="float" name="gy" units="deg/s">roll angle</field>
+      <field type="float" name="gz" units="deg/s">roll angle</field>
+      <field type="float" name="ax" units="m/s/s">roll angle</field>
+      <field type="float" name="ay" units="m/s/s">roll angle</field>
+      <field type="float" name="az" units="m/s/s">roll angle</field>
+      <field type="int32_t" name="sat_lon" units="degE7">gps longitude</field>
+      <field type="int32_t" name="sat_lat" units="degE7">gps latitude</field>
+      <field type="float" name="sat_msl" units="m">gps altitude</field>
+      <field type="float" name="sat_ve" units="m/s">gps east speed</field>
+      <field type="float" name="sat_vn" units="m/s">gps north speed</field>
+      <field type="float" name="sat_vu" units="m/s">gps up speed</field>
+      <field type="uint8_t" name="sat_pfix">gps position fix</field>
+      <field type="uint8_t" name="sat_hfix">gps heading fix</field>
+      <field type="uint8_t" name="wk_state">work state</field>
+      <field type="uint8_t" name="err_code">error code</field>
+    </message>
+
+    <message id="53024" name="VK_RTK_BASE_PVT">
+      <description>RTK basestaion pvt</description>
+      <field type="uint32_t" name="timestamp" units="ms">timestamp from system boot</field>
+      <field type="int32_t" name="lon" units="degE7">solved longitude</field>
+      <field type="int32_t" name="lat" units="degE7">solved latitude</field>
+      <field type="float" name="msl" units="m">solved latitude</field>
+      <field type="float" name="ve" units="m/s">solved east speed</field>
+      <field type="float" name="vn" units="m/s">solved north speed</field>
+      <field type="float" name="vu" units="m/s">solved up speed</field>
+      <field type="float" name="heading" units="deg">yaw angle</field>
+      <field type="float" name="pitch" units="deg">pitch angle</field>
+      <field type="uint8_t" name="p_sat_num">position satellite number</field>
+      <field type="uint8_t" name="h_sat_num">heading satellite number</field>
+      <field type="uint8_t" name="p_type">heading satellite number</field>
+      <field type="uint8_t" name="h_type">heading satellite number</field>
+    </message>
+
+    <message id="53025" name="VKFLY_EDU_STATUS">
+      <description>EDU status</description>
+      <field type="uint64_t" name="unix_timestamp" units="ms">Unix timestamp in ms, from 1 Jan 1970.</field>
+      <field type="uint32_t" name="boot_timestamp" units="ms">Timestamp in ms from system boot.</field>
+      <field type="uint32_t" name="seq">Sequence number for this package.</field>
+      <field type="uint32_t" name="dev_sn">Device SN number.</field>
+      <field type="uint8_t" name="dev_type">0 for flight controller. 1 for elec-stake</field>
+      <field type="uint8_t" name="retry_cnt">Retry send this message count.</field>
+      <field type="uint8_t" name="fix_type">0 no fix, 1 single, 2 RTK</field>
+      <field type="uint8_t" name="reserve"></field>
+      <field type="int32_t" name="longitude" units="degE7">wgs84 longitude</field>
+      <field type="int32_t" name="latitude" units="degE7">wgs84 latitude</field>
+      <field type="float" name="amsl" units="m">altitude amsl</field>
+      <field type="float" name="alt_relative" units="m">altitude above takeoff</field>
+      <field type="int16_t" name="ve" units="cm/s"></field>
+      <field type="int16_t" name="vn" units="cm/s"></field>
+      <field type="int16_t" name="vu" units="cm/s"></field>
+      <field type="int16_t" name="yaw" units="cdeg"></field>
+      <field type="int16_t" name="pitch" units="cdeg"></field>
+      <field type="int16_t" name="roll" units="cdeg"></field>
+      <field type="int16_t" name="yaw_rate" units="cdeg/s"></field>
+      <field type="uint8_t" name="flight_mode"></field>
+    </message>
+
+    <message id="53026" name="VKFLY_EDU_STATUS_ACK">
+      <description>EDU status ack</description>
+      <field type="uint64_t" name="unix_timestamp" units="ms">Unix timestamp in ms, from 1 Jan 1970.</field>
+      <field type="uint32_t" name="seq">Sequence number in the received VKFLY_EDU_STATUS.</field>
+    </message>
+
+    <message id="53030" name="VKFLY_TIANQU_SERVO_STATUS">
+      <description>TianQu servo status</description>
+      <field type="uint32_t" name="timestamp"></field>
+      <field type="uint32_t" name="load_status"></field>
+      <field type="uint32_t" name="servo_status"></field>
+    </message>
+
+    <message id="53100" name="VK_FW_UPDATE_BEGIN">
+      <description>VKFLY autopilot update firmware begin. This message send from GCS to autopilot. </description>
+      <field type="uint8_t" name="target_system">Target system id.</field>
+      <field type="uint8_t" name="target_comp">Target compid id.</field>
+      <field type="uint32_t" name="file_size" units="bytes">Size of the firmware file in bytes.</field>
+    </message>
+    <message id="53101" name="VK_FW_UPDATE_ACK">
+      <description>VKFLY udpate acknowledge.</description>
+      <field type="uint8_t" name="result" enum="MAV_RESULT">Update begin ack.</field>
+    </message>
+    <message id="53102" name="VK_FW_UPDATE_DATA_REQUEST">
+      <description>VKFLY autopilot request update file data from GCS. </description>
+      <field type="uint32_t" name="offset">Offset into the update file.</field>
+      <field type="uint32_t" name="count">Number of bytes.</field>
+    </message>
+    <message id="53103" name="VK_FW_UPDATE_DATA">
+      <description>VKFLY transfer update file data.</description>
+      <field type="uint32_t" name="offset">Offset into the update file.</field>
+      <field type="uint8_t" name="count" minValue="0" maxValue="128" increment="1">Number of bytes.
+        Zero for end of file.</field>
+      <field type="uint8_t[128]" name="data">File data.</field>
+    </message>
+    <message id="53104" name="VK_UPDATE_TERMINATE">
+      <description>VKFLY transfer update terminate. Send this message to terminate a update file
+        transfer.</description>
+      <field type="uint8_t" name="target_system">Target system id.</field>
+      <field type="uint8_t" name="target_comp">Target compid id.</field>
+    </message>
+
+    <message id="53110" name="VK_CACC_MANAGER_VERIFY">
+      <description>CACC manager verify message, in json format.</description>
+      <field type="uint8_t" name="len">json data length in byte.</field>
+      <field type="uint8_t[200]" name="json_data">json data.</field>
+    </message>
+
+    <message id="53200" name="FMUB_STATUS">
+      <description>EV2 FMU backup status.</description>
+      <field type="uint32_t" name="timestamp" units="ms">timestamp from systemboot in ms.</field>
+      <field type="float" name="roll" units="rad">euler roll angle.</field>
+      <field type="float" name="pitch" units="rad">euler pitch angle.</field>
+      <field type="float" name="yaw" units="rad">euler yaw angle.</field>
+      <field type="float" name="vn" units="m/s">velocity in northward axis.</field>
+      <field type="float" name="ve" units="m/s">velocity in eastward axis.</field>
+      <field type="float" name="vd" units="m/s">velocity in downward axis.</field>
+      <field type="float" name="ax" units="m/s/s">acceleration in x axis.</field>
+      <field type="float" name="ay" units="m/s/s">acceleration in y axis.</field>
+      <field type="float" name="az" units="m/s/s">acceleration in z axis.</field>
+      <field type="float" name="gx" units="rad/s">angular velocity in x axis.</field>
+      <field type="float" name="gy" units="rad/s">angular velocity in y axis.</field>
+      <field type="float" name="gz" units="rad/s">angular velocity in z axis.</field>
+      <field type="int32_t" name="lat" units="degE7">latitude.</field>
+      <field type="int32_t" name="lon" units="degE7">longitude.</field>
+      <field type="float" name="amsl" units="m">altitude above mean sea level.</field>
+      <field type="int32_t" name="ins_status"></field>
+      <field type="int32_t" name="ins_flag"></field>
+      <field type="uint16_t" name="throttle" minValue="0" maxValue="100" increment="1">throttle
+        output.</field>
+      <field type="uint8_t" name="flight_mode">flight mode.</field>
+      <field type="uint8_t" name="btake_status" minValue="0" maxValue="1" increment="1">backup
+        takeover
+        status.</field>
+    </message>
+
+    <message id="53300" name="QINGXIE_BMS">
+      <description>VKFLY transfer update terminate. Send this message to terminate a update file
+        transfer.</description>
+      <field type="uint16_t" name="bat_voltage" units="cV">Battery voltage.</field>
+      <field type="uint16_t" name="servo_current" units="cA">Servo current.</field>
+      <field type="uint16_t" name="stack_voltage" units="cV">Stack voltage.</field>
+      <field type="uint16_t" name="servo_voltage" units="cV">Servo voltage.</field>
+      <field type="uint16_t" name="bat_refuel_current" units="cA">Battery refuel current.</field>
+      <field type="uint16_t" name="gas_tank_pressure">Gas tank pressure.</field>
+      <field type="uint16_t" name="pipe_pressure">Pipe pressure.</field>
+      <field type="uint16_t" name="pcb_temp">PCB temperature.</field>
+      <field type="uint16_t" name="stack_temp">Stack temperature.</field>
+      <field type="uint16_t" name="work_status"></field>
+      <field type="uint16_t" name="falt_status"></field>
+      <field type="uint8_t" name="self_check"></field>
+      <field type="uint8_t" name="Id"></field>
+      <extensions />
+      <field type="uint16_t" name="gass_mass" units="dg"></field>
+      <field type="uint16_t" name="gass_percent" units="%"></field>
+      <field type="uint16_t" name="runtime_remain"></field>
+      <field type="uint8_t" name="fan_percent"></field>
+      <field type="uint8_t" name="fan_rpm"></field>
+      <field type="uint8_t" name="sys_run_state"> </field>
+      <field type="uint8_t" name="sys_fault_state"> </field>
+      <field type="uint16_t" name="sys_fault_code"> </field>
+      <field type="uint16_t" name="lipo_current" units="dA"> </field>
+      <field type="uint16_t" name="total_runtime" units="dh"></field>
+    </message>
+
+
+  </messages>
+
+</mavlink>
