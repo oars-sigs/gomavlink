@@ -1,4 +1,4 @@
-module gomavlink
+module github.com/oars-sigs/gomavlink
 
 go 1.25.5
 
